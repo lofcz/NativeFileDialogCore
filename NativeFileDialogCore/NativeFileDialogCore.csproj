@@ -10,7 +10,7 @@
         <PackageProjectUrl>https://github.com/lofcz/NativeFileDialogCore</PackageProjectUrl>
         <RepositoryUrl>https://github.com/lofcz/NativeFileDialogCore</RepositoryUrl>
         <Description>Cross-platform native file dialog controls for Windows, Linux and macOS</Description>
-        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+        <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
@@ -27,6 +27,9 @@
         <Content Include="nfd64.dll">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+        <None Update="nfd64.so">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>

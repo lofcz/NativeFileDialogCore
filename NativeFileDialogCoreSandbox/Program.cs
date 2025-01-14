@@ -6,9 +6,10 @@ namespace NativeFileDialogCoreSandbox
 {
     internal class Program
     {
+#if WINDOWS
         [DllImport("kernel32.dll")]
         static extern IntPtr GetConsoleWindow();
-        
+#endif          
         [STAThread]
         static void Main(string[] args)
         {
@@ -19,7 +20,7 @@ namespace NativeFileDialogCoreSandbox
             #if WINDOWS
             consoleHandle = GetConsoleWindow();
             #endif            
-
+            
             PrintResult(Dialog.FileOpenEx(null, null, "C# dialog title!", selectButtonLabel: "ok dokie", cancelButtonLabel: "no no go back", parentWindow: consoleHandle));
                 
             return;
