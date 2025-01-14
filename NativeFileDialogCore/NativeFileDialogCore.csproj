@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <LangVersion>preview</LangVersion>
+        <PackageVersion>0.5.0</PackageVersion>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <PackageLicenseExpression>Zlib</PackageLicenseExpression>
+        <Authors>Matěj "lofcz" Štágl, milleniumbug</Authors>
+        <PackageProjectUrl>https://github.com/lofcz/NativeFileDialogCore</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/lofcz/NativeFileDialogCore</RepositoryUrl>
+        <Description>Cross-platform native file dialog controls for Windows, Linux and macOS</Description>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="runtimes\**" PackagePath="runtimes" />
+        <Content Include="nfd.dll">
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <Content Include="nfd_x86.dll">
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <None Remove="nfd64.dll" />
+        <Content Include="nfd64.dll">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+</Project>

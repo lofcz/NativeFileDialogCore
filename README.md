@@ -1,6 +1,6 @@
-# NativeFileDialogSharp
+# NativeFileDialogCore
 
-C# library bindings for [nativefiledialog](https://github.com/mlabbe/nativefiledialog). 
+C# library bindings for [nativefiledialog](https://github.com/lofcz/nativefiledialog). 
 
 The library currently implements
 
