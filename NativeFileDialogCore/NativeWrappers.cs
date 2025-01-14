@@ -42,8 +42,8 @@ namespace NativeFileDialogCore
     
     public static class Dialog
     {
-        private static readonly bool need32bit = Is32BitWindowsOnNetFramework();
-        private static readonly MemoryPool<byte> _memoryPool = MemoryPool<byte>.Shared;
+        private static readonly bool Need32Bit = Is32BitWindowsOnNetFramework();
+        private static readonly MemoryPool<byte> MemoryPool = MemoryPool<byte>.Shared;
         
         private static bool Is32BitWindowsOnNetFramework()
         {
@@ -95,7 +95,7 @@ namespace NativeFileDialogCore
         private static IMemoryOwner<byte> RentUtf8Buffer(string text)
         {
             int byteCount = Encoding.UTF8.GetByteCount(text) + 1;
-            IMemoryOwner<byte> owner = _memoryPool.Rent(byteCount);
+            IMemoryOwner<byte> owner = MemoryPool.Rent(byteCount);
             Encoding.UTF8.GetBytes(text, owner.Memory.Span);
             owner.Memory.Span[byteCount - 1] = 0;
             return owner;
@@ -131,7 +131,7 @@ namespace NativeFileDialogCore
                 string? path = null;
                 string? errorMessage = null;
                 
-                nfdresult_t result = need32bit 
+                nfdresult_t result = Need32Bit 
                     ? NativeFunctions32.NFD_OpenDialogEx(filterListPtr, defaultPathPtr, titlePtr, fileNameLabelPtr, selectButtonLabelPtr, cancelButtonLabelPtr, parentWindow ?? IntPtr.Zero, out IntPtr outPathIntPtr)
                     : NativeFunctions.NFD_OpenDialogEx(filterListPtr, defaultPathPtr, titlePtr, fileNameLabelPtr, selectButtonLabelPtr, cancelButtonLabelPtr, parentWindow ?? IntPtr.Zero, out outPathIntPtr);
                 
@@ -160,7 +160,7 @@ namespace NativeFileDialogCore
             {
                 string path = null;
                 string errorMessage = null;
-                nfdresult_t result = need32bit 
+                nfdresult_t result = Need32Bit 
                     ? NativeFunctions32.NFD_OpenDialog(filterListNts, defaultPathNts, out IntPtr outPathIntPtr)
                     : NativeFunctions.NFD_OpenDialog(filterListNts, defaultPathNts, out outPathIntPtr);
                 
@@ -189,7 +189,7 @@ namespace NativeFileDialogCore
             {
                 string path = null;
                 string errorMessage = null;
-                nfdresult_t result = need32bit 
+                nfdresult_t result = Need32Bit 
                     ? NativeFunctions32.NFD_SaveDialog(filterListNts, defaultPathNts, out IntPtr outPathIntPtr) 
                     : NativeFunctions.NFD_SaveDialog(filterListNts, defaultPathNts, out outPathIntPtr);
                 
@@ -217,7 +217,7 @@ namespace NativeFileDialogCore
             {
                 string path = null;
                 string errorMessage = null;
-                nfdresult_t result = need32bit
+                nfdresult_t result = Need32Bit
                     ? NativeFunctions32.NFD_PickFolder(defaultPathNts, out IntPtr outPathIntPtr)
                     : NativeFunctions.NFD_PickFolder(defaultPathNts, out outPathIntPtr);
                 
@@ -247,7 +247,7 @@ namespace NativeFileDialogCore
                 List<string> paths = null;
                 string errorMessage = null;
                 nfdpathset_t pathSet;
-                nfdresult_t result = need32bit
+                nfdresult_t result = Need32Bit
                     ? NativeFunctions32.NFD_OpenDialogMultiple(filterListNts, defaultPathNts, &pathSet)
                     : NativeFunctions.NFD_OpenDialogMultiple(filterListNts, defaultPathNts, &pathSet);
                 

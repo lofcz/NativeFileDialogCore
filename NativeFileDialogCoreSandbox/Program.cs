@@ -21,7 +21,7 @@ namespace NativeFileDialogCoreSandbox
             consoleHandle = GetConsoleWindow();
             #endif            
             
-            PrintResult(Dialog.FileOpenEx(null, null, "C# dialog title!", selectButtonLabel: "ok dokie", cancelButtonLabel: "no no go back", parentWindow: consoleHandle));
+            PrintResult(Dialog.FileOpenEx("[Awesome named list|jpg,png]", null, "Select File - NativeFileDialogCore!", selectButtonLabel: "That's the one!", cancelButtonLabel: "Abort mission!", parentWindow: consoleHandle));
                 
             return;
             
