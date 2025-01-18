@@ -8,41 +8,41 @@ namespace NativeFileDialogCore.Native
     {
         private const string LibraryName = "nfd_x86";
 
-        [LibraryImport(LibraryName)]
+        [LibraryImport(LibraryName, StringMarshalling = StringMarshalling.Utf8)]
         [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
-        internal static unsafe partial nfdresult_t NFD_OpenDialog(byte* filterList, byte* defaultPath, out IntPtr outPath);
-        
-        [LibraryImport(LibraryName)]
+        internal static partial nfdresult_t NFD_OpenDialog(string? filterList, string? defaultPath, out IntPtr outPath);
+
+        [LibraryImport(LibraryName, StringMarshalling = StringMarshalling.Utf8)]
         [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
-        internal static unsafe partial nfdresult_t NFD_OpenDialogEx(byte* filterList, byte* defaultPath, byte* dialogTitle, byte* fileNameLabel, byte* selectButtonLabel, byte* cancelButtonLabel, IntPtr parentWindow, out IntPtr outPath);
+        internal static partial nfdresult_t NFD_OpenDialogEx(string? filterList, string? defaultPath, string? dialogTitle, string? fileNameLabel, string? selectButtonLabel, string? cancelButtonLabel, IntPtr parentWindow, out IntPtr outPath);
+
+        [LibraryImport(LibraryName, StringMarshalling = StringMarshalling.Utf8)]
+        [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
+        internal static partial nfdresult_t NFD_OpenDialogMultiple(string? filterList, string? defaultPath, out nfdpathset_t outPaths);
+
+        [LibraryImport(LibraryName, StringMarshalling = StringMarshalling.Utf8)]
+        [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
+        internal static partial nfdresult_t NFD_SaveDialog(string? filterList, string? defaultPath, out IntPtr outPath);
+
+        [LibraryImport(LibraryName, StringMarshalling = StringMarshalling.Utf8)]
+        [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
+        internal static partial nfdresult_t NFD_PickFolder(string? defaultPath, out IntPtr outPath);
+
+        [LibraryImport(LibraryName, StringMarshalling = StringMarshalling.Utf8)]
+        [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
+        internal static partial string NFD_GetError();
 
         [LibraryImport(LibraryName)]
         [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
-        internal static unsafe partial nfdresult_t NFD_OpenDialogMultiple(byte* filterList, byte* defaultPath, nfdpathset_t* outPaths);
+        internal static partial UIntPtr NFD_PathSet_GetCount(in nfdpathset_t pathSet);
 
         [LibraryImport(LibraryName)]
         [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
-        internal static unsafe partial nfdresult_t NFD_SaveDialog(byte* filterList, byte* defaultPath, out IntPtr outPath);
+        internal static partial IntPtr NFD_PathSet_GetPath(in nfdpathset_t pathSet, UIntPtr index);
 
         [LibraryImport(LibraryName)]
         [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
-        internal static unsafe partial nfdresult_t NFD_PickFolder(byte* defaultPath, out IntPtr outPath);
-
-        [LibraryImport(LibraryName)]
-        [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
-        internal static unsafe partial byte* NFD_GetError();
-
-        [LibraryImport(LibraryName)]
-        [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
-        internal static unsafe partial UIntPtr NFD_PathSet_GetCount(nfdpathset_t* pathSet);
-
-        [LibraryImport(LibraryName)]
-        [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
-        internal static unsafe partial byte* NFD_PathSet_GetPath(nfdpathset_t* pathSet, UIntPtr index);
-
-        [LibraryImport(LibraryName)]
-        [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]
-        internal static unsafe partial void NFD_PathSet_Free(nfdpathset_t* pathSet);
+        internal static partial void NFD_PathSet_Free(ref nfdpathset_t pathSet);
 
         [LibraryImport(LibraryName)]
         [UnmanagedCallConv(CallConvs = [typeof(System.Runtime.CompilerServices.CallConvCdecl)])]

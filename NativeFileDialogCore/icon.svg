@@ -1,0 +1,26 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="folderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#7928CA"/>
+            <stop offset="50%" style="stop-color:#5B21B6"/>
+            <stop offset="100%" style="stop-color:#4C1D95"/>
+        </linearGradient>
+    </defs>
+
+    <path
+            d="M21.33 64C21.33 52.2181 31.0181 42.67 42.67 42.67H96L117.33 64H213.33C225.12 64 234.67 73.6181 234.67 85.33V192C234.67 203.782 225.12 213.33 213.33 213.33H42.67C31.0181 213.33 21.33 203.782 21.33 192V64Z"
+            fill="url(#folderGradient)"
+    />
+
+    <text
+            x="50%"
+            y="55%"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            fill="white"
+            font-family="Arial, sans-serif"
+            font-size="64px"
+            font-weight="bold">
+        NFD
+    </text>
+</svg>

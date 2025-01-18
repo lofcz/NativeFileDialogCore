@@ -2,7 +2,7 @@
 
 namespace NativeFileDialogCore.Generator;
 
-class Program
+internal class Program
 {
     public static void GenerateNativeFunctions32(string inputFilePath, string outputFilePath)
     {
@@ -42,8 +42,8 @@ class Program
 
         File.WriteAllText(outputFilePath, result);
     }
-    
-    static void Main(string[] args)
+
+    private static void Main(string[] args)
     {
         GenerateNativeFunctions32("../../../../NativeFileDialogCore/Native/NativeFunctions.cs", "../../../../NativeFileDialogCore/Native/NativeFunctions32.cs");
     }

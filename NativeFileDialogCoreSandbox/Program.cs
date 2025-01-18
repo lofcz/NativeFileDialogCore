@@ -8,10 +8,10 @@ namespace NativeFileDialogCoreSandbox
     {
 #if WINDOWS
         [DllImport("kernel32.dll")]
-        static extern IntPtr GetConsoleWindow();
+        private static extern IntPtr GetConsoleWindow();
 #endif          
         [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("test");
 
@@ -19,19 +19,21 @@ namespace NativeFileDialogCoreSandbox
             
             #if WINDOWS
             consoleHandle = GetConsoleWindow();
-            #endif            
+            #endif
+
+            //PrintResult(Dialog.FileOpen("jpg"));
+            //PrintResult(Dialog.FileOpenEx("[Awesome named list|jpg,png]", null, "Select File - NativeFileDialogCore!", selectButtonLabel: "That's the one!", cancelButtonLabel: "Abort mission!", parentWindow: consoleHandle));
+            //return;
             
-            PrintResult(Dialog.FileOpenEx("[Awesome named list|jpg,png]", null, "Select File - NativeFileDialogCore!", selectButtonLabel: "That's the one!", cancelButtonLabel: "Abort mission!", parentWindow: consoleHandle));
-                
-            return;
-            
-            PrintResult(Dialog.FileOpenMultiple("pdf", null));
-            PrintResult(Dialog.FileOpen(null));
-            PrintResult(Dialog.FileSave(null));
-            PrintResult(Dialog.FolderPicker(null));
+            //PrintResult(Dialog.FileOpenMultiple("pdf"));
+            //PrintResult(Dialog.FileOpen());
+            //PrintResult(Dialog.FileSave("txt"));
+            PrintResult(Dialog.FolderPicker());
+
+            Console.ReadKey();
         }
 
-        static void PrintResult(DialogResult result)
+        private static void PrintResult(DialogResult result)
         {
             Console.WriteLine($"Path: {result.Path}, IsError {result.IsError}, IsOk {result.IsOk}, IsCancelled {result.IsCancelled}, ErrorMessage {result.ErrorMessage}");
             if (result.Paths != null)
