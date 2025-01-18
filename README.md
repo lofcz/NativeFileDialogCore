@@ -1,3 +1,5 @@
+[![NativeFileDialogCore](https://badgen.net/nuget/v/NativeFileDialogCore?v=302&icon=nuget&label=NativeFileDialogCore)](https://www.nuget.org/packages/NativeFileDialogCore)
+
 # NativeFileDialog Core
 
 .NET Core 8+ bindings for [nativefiledialog](https://github.com/lofcz/nativefiledialog). The successor of [NativeFileDialogSharp](https://github.com/milleniumbug/nativefiledialogsharp) for modern runtime.
